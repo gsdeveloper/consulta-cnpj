@@ -2,6 +2,7 @@
   "name": "consulta-cnpj",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://127.0.0.1:7360",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/lab": "^4.0.0-alpha.57",
@@ -47,6 +48,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^17.0.1"
+    "@testing-library/react-hooks": "^5.0.3",
+    "@types/react": "^17.0.1",
+    "react-test-renderer": "^17.0.1"
   }
 }
