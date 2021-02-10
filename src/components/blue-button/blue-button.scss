@@ -1,0 +1,15 @@
+.blue-button {
+  background-color: #1565db;
+  border-radius: 6px;
+  color: white;
+  padding: 12px 22px;
+  font-weight: 500;
+  font-size: 12px;
+  height: 44px;
+  &:active {
+    background-color: #0e4eac;
+  }
+  &--main {
+    margin-top: 24px;
+  }
+}
