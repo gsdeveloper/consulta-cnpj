@@ -1,0 +1,25 @@
+.MuiOutlinedInput-root {
+  border-radius: 6px;
+  background-color: white;
+  padding: 10px !important;
+}
+.MuiOutlinedInput-input {
+  color: #5c626d !important;
+}
+.MuiOutlinedInput-notchedOutline {
+  border-color: #b4c1d5 !important;
+}
+.MuiAutocomplete-inputRoot[class*='MuiOutlinedInput-root']
+  .MuiAutocomplete-input {
+  padding: 7.5px 4px !important;
+}
+
+.MuiAutocomplete-inputRoot .MuiAutocomplete-input {
+  font-size: 14px;
+}
+
+.input-field {
+  &__progress {
+    margin-right: 40px;
+  }
+}
