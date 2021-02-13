@@ -20,15 +20,8 @@ const Sign = ({ type }: { type: 'login' | 'signup' }) => {
     { enabled: sign }
   );
 
-  const { data: loginData } = useAuth(
-    {
-      email,
-      password,
-      req: 'login',
-    },
-    { enabled: type === 'signup' && sign }
-  );
   const navigate = useNavigate();
+
   useEffect(() => {
     if (
       (authStatus === 'success' && sign) ||
@@ -39,6 +32,10 @@ const Sign = ({ type }: { type: 'login' | 'signup' }) => {
           error: false,
           message: `${type === 'signup' ? 'Registrado' : 'Logado'} com sucesso`,
         });
+        if (data) {
+          localStorage.setItem('TOKEN', data);
+          navigate('/details');
+        }
       }
       if (authStatus === 'error') {
         if (error?.message === 'NotFound') {
@@ -50,20 +47,7 @@ const Sign = ({ type }: { type: 'login' | 'signup' }) => {
       }
       setSign(false);
     }
-  }, [sign, authStatus, loginData]);
-
-  useEffect(() => {
-    if (sign) {
-      if (data && type === 'login') {
-        localStorage.setItem('TOKEN', data);
-        navigate('/details');
-      }
-      if (loginData && type === 'signup') {
-        localStorage.setItem('TOKEN', loginData);
-        navigate('/details');
-      }
-    }
-  }, [data, loginData, sign]);
+  }, [sign, authStatus, data, type, error?.message]);
 
   return (
     <div className="sign">
