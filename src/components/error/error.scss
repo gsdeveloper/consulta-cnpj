@@ -1,0 +1,25 @@
+.error {
+  border-radius: 6px;
+  border: 1px solid #d07979;
+  background: white;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__info {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__title {
+    font-weight: 600;
+    color: #1f2b3d;
+    font-size: 20px;
+  }
+  &__paragraph {
+    font-size: 11px;
+    color: #8fa3c1;
+    margin-top: 13px;
+  }
+}
