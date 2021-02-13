@@ -1,6 +1,6 @@
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { Link, useNavigate } from '@reach/router';
+import { Link, useLocation, useNavigate } from '@reach/router';
 import './sign.scss';
 import 'components/blue-button/blue-button.scss';
 import { useEffect, useState } from 'react';
@@ -21,22 +21,43 @@ const Sign = ({ type }: { type: 'login' | 'signup' }) => {
   );
 
   const navigate = useNavigate();
+  const {
+    state: { isRegistered },
+  } = useLocation() as { state: { isRegistered: boolean } };
+
+  // check if user made signup to display feeedback message
+  useEffect(() => {
+    if (isRegistered) {
+      setStatus({
+        error: false,
+        message: 'Cadastro feito com sucesso, faça login com sua conta',
+      });
+    }
+  }, []);
 
   useEffect(() => {
+    // check if auth goes sucessful
     if (
       (authStatus === 'success' && sign) ||
       (authStatus === 'error' && sign)
     ) {
+      // if auth request is made display message
       if (authStatus === 'success') {
         setStatus({
           error: false,
           message: `${type === 'signup' ? 'Registrado' : 'Logado'} com sucesso`,
         });
+        // if it's a signup, navigate to details, otherwise go navigate to login page.
         if (data) {
-          localStorage.setItem('TOKEN', data);
-          navigate('/details');
+          if (type === 'signup') {
+            navigate('/login', { state: { isRegistered: true } });
+          } else {
+            localStorage.setItem('TOKEN', data);
+            navigate('/details');
+          }
         }
       }
+      // display specific error messages
       if (authStatus === 'error') {
         if (error?.message === 'NotFound') {
           setStatus({ error: true, message: 'Usuário não encontrado' });
