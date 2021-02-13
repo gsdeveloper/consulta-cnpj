@@ -29,7 +29,6 @@ const Sign = ({ type }: { type: 'login' | 'signup' }) => {
     { enabled: type === 'signup' && sign }
   );
   const navigate = useNavigate();
-
   useEffect(() => {
     if (
       (authStatus === 'success' && sign) ||
@@ -54,15 +53,17 @@ const Sign = ({ type }: { type: 'login' | 'signup' }) => {
   }, [sign, authStatus, loginData]);
 
   useEffect(() => {
-    if (data && type === 'login') {
-      localStorage.setItem('TOKEN', data);
-      navigate('/details');
+    if (sign) {
+      if (data && type === 'login') {
+        localStorage.setItem('TOKEN', data);
+        navigate('/details');
+      }
+      if (loginData && type === 'signup') {
+        localStorage.setItem('TOKEN', loginData);
+        navigate('/details');
+      }
     }
-    if (loginData && type === 'signup') {
-      localStorage.setItem('TOKEN', loginData);
-      navigate('/details');
-    }
-  }, [data, loginData]);
+  }, [data, loginData, sign]);
 
   return (
     <div className="sign">
@@ -80,7 +81,7 @@ const Sign = ({ type }: { type: 'login' | 'signup' }) => {
           </p>
         </div>
       </div>
-      <div className="sign__sign">
+      <div className="sign__container">
         <div className="sign__content">
           <div className="sign__info-wrap">
             <p className="sign__consult sign__consult--mobile">
