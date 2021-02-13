@@ -22,7 +22,7 @@ const renderWithRouter = (
   history,
 });
 
-test('if sign, navigation and nav works correctly', async () => {
+test('if signup', async () => {
   const {
     history: { navigate },
   } = renderWithRouter(
@@ -55,17 +55,30 @@ test('if sign, navigation and nav works correctly', async () => {
   await screen.findByText('Usuário já está cadastrado');
 
   expect(feedback).toHaveTextContent('Usuário já está cadastrado');
+});
 
+test('if login, navigation and nav works correctly', async () => {
+  const {
+    history: { navigate },
+  } = renderWithRouter(
+    <Wrapper>
+      <App />
+    </Wrapper>,
+    { route: '/' }
+  );
   await navigate('/login');
-  emailInput.setSelectionRange(0, emailInput.value.length);
-  passwordInput.setSelectionRange(0, passwordInput.value.length);
+  const emailInput = screen.getByTestId('email') as HTMLInputElement;
+  const passwordInput = screen.getByTestId('password') as HTMLInputElement;
+  const submit = screen.getByTestId('sign-button');
 
-  userEvent.type(emailInput, 'test12345678@gmail.com');
-  userEvent.type(passwordInput, 'tes');
+  userEvent.type(emailInput, 'teste@gmail.com');
+
+  userEvent.type(passwordInput, 'teste');
 
   userEvent.click(submit);
-
-  await navigate('/details');
+  await waitFor(() =>
+    expect(screen.queryByTestId('sign-button')).not.toBeInTheDocument()
+  );
   expect(screen.getByTestId('details')).toBeInTheDocument();
   expect(
     screen.queryByRole('button', { name: 'Mais dados de CNPJ' })
