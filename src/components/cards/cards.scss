@@ -1,7 +1,6 @@
-.card {
+.cards {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   background: #ffffff;
   border: 1px solid #b4c1d5;
   border-radius: 6px;
@@ -14,11 +13,14 @@
   &__title {
     font-weight: 600;
     font-size: 16px;
+    text-transform: capitalize;
     color: #2b3b54;
   }
   &__paragraph {
+    overflow-wrap: break-word;
     margin-top: 10px;
     color: #576a85;
     font-size: 13px;
+    text-transform: uppercase;
   }
 }
