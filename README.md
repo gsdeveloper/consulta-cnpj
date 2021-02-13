@@ -33,13 +33,13 @@
 - [Tech Stack](#Tech-Stack)
 <!--te-->
 
----
+
 
 ## 🖥 Sobre
 
 Este app tem como objetivo consumir uma API de CNPJs, mostrando os dados disponíveis de forma clara e concisa. 
 
----
+
 
 ## 🕹 Funcionalidades
 
@@ -47,7 +47,6 @@ Este app tem como objetivo consumir uma API de CNPJs, mostrando os dados dispon�
 - [x] Consulta de CNPJ com mais dados  (precisa estar logado)
 - [x] Sistema de registro e login com validação dos campos
 
----
 
 ## 🛠 Tech Stack
 
@@ -59,7 +58,7 @@ Este app tem como objetivo consumir uma API de CNPJs, mostrando os dados dispon�
 - **[Jest](https://github.com/facebook/jest)** Framework de testes
 - **[TypeScript](https://github.com/microsoft/TypeScript)** - Superconjunto de javascript que adiciona tipagem a linguagem
 
----
+
 
 ## 🚀 Instalação
 
