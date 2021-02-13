@@ -4,14 +4,14 @@ import './input-field.scss';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const InputField = ({
-  placeholder,
+  label,
   cnpjs,
   className,
   isLoading = false,
   setCnpj,
   cnpj,
 }: {
-  placeholder?: string;
+  label?: string;
   cnpjs?: string[];
   className?: string;
   isLoading?: boolean;
@@ -23,12 +23,12 @@ const InputField = ({
       className={className}
       loading={isLoading}
       options={cnpjs || []}
-      value={cnpj}
       onChange={(_, value) => setCnpj(value || '')}
       getOptionLabel={(option) => option}
       renderInput={(params) => (
         <TextField
-          label={placeholder}
+          label={label}
+          value={cnpj}
           {...params}
           variant="outlined"
           onChange={(e) => setCnpj(e.currentTarget.value)}
