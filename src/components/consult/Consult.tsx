@@ -6,6 +6,7 @@ import { Cards } from 'components/cards';
 import { Nav } from 'components/nav';
 import { InputField } from 'components/input-field';
 import 'components/blue-button/blue-button.scss';
+import './consult.scss';
 
 const Consult = ({ type }: { type: 'main' | 'details' }) => {
   const { data: cnpjs } = useCnpjs();
