@@ -1,14 +1,27 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
-import { Cnpj } from 'types';
+import { DetailsCnpj } from 'utils/types';
 
-const getCnpj = async (cnpj: string) => {
-  const { data } = await axios.get(`http://127.0.0.1:7360/cnpj/get/${cnpj}`);
+type CnpjOptions = {
+  cnpj: string;
+  type: 'main' | 'details';
+};
+
+const getCnpj = async ({ cnpj, type }: CnpjOptions) => {
+  const token = localStorage.getItem('TOKEN');
+  if (type === 'details') {
+    axios.defaults.headers['x-api-key'] = token;
+  }
+  const { data } = await axios.get(
+    `http://127.0.0.1:7360/cnpj/${
+      type === 'main' ? 'get/' + cnpj : 'get/' + cnpj + '/detail'
+    }`
+  );
   return data;
 };
 
-const useCnpj = (cnpj: string, options?: any) =>
-  useQuery<Cnpj, Error>(['cnpj', cnpj], () => getCnpj(cnpj), {
+const useCnpj = ({ cnpj, type }: CnpjOptions, options?: any) =>
+  useQuery<DetailsCnpj, Error>(['cnpj', cnpj], () => getCnpj({ cnpj, type }), {
     ...options,
   });
 
