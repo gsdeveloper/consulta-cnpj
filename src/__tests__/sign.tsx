@@ -22,7 +22,7 @@ const renderWithRouter = (
   history,
 });
 
-test('if signup', async () => {
+test('if signup works correctly', async () => {
   const {
     history: { navigate },
   } = renderWithRouter(
@@ -50,11 +50,8 @@ test('if signup', async () => {
   expect(feedback).toHaveTextContent(
     'A senha precisa ter pelo menos três caracteres'
   );
-  userEvent.type(passwordInput, 't');
+  userEvent.type(passwordInput, 'ste');
   userEvent.click(submit);
-  await screen.findByText('Usuário já está cadastrado');
-
-  expect(feedback).toHaveTextContent('Usuário já está cadastrado');
 });
 
 test('if login, navigation and nav works correctly', async () => {
