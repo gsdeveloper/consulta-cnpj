@@ -1,0 +1,139 @@
+%infoicon {
+  content: url(../../assets/paragraph-icon.svg);
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.MuiOutlinedInput-input {
+  color: #5c626d !important;
+  padding: 6.5px 14px !important;
+}
+.MuiOutlinedInput-notchedOutline {
+  border-color: #b4c1d5 !important;
+}
+.MuiOutlinedInput-input {
+  font-size: 14px !important;
+}
+.MuiFormLabel-root {
+  font-size: 13px !important;
+}
+.sign {
+  display: flex;
+  color: white;
+  min-height: 100vh;
+  &__circular {
+    margin-left: 10px;
+  }
+  &__feedback {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 20px;
+    &--success {
+      color: #1565d8;
+    }
+    &--error {
+      color: #d81515;
+    }
+  }
+  &__email {
+    margin-top: 26px !important;
+  }
+  &__password {
+    margin-top: 20px !important;
+  }
+  &__wrapper {
+    margin: auto 0;
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 26px;
+    color: #303846;
+  }
+  &__page-info {
+    display: none;
+
+    @media (min-width: 420px) {
+      display: block;
+    }
+    @media (min-width: 768px) {
+      margin-left: auto;
+    }
+  }
+  &__paragraph {
+    font-size: 12px;
+    color: #b4c1d5;
+    margin-top: 14px;
+  }
+
+  &__area {
+    color: #9da8b9;
+    font-size: 12px;
+    text-align: right;
+    font-weight: 500;
+  }
+  &__personal {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 6px;
+    color: #b4c1d5;
+  }
+  &__info-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__presentation {
+    background-image: url('../../assets/bg.png');
+    background-size: cover;
+    flex: 1;
+    background-position: center;
+    display: none;
+    @media (min-width: 768px) {
+      display: initial;
+    }
+  }
+  &__sign {
+    flex: 1;
+  }
+  &__content {
+    padding: 30px 25px;
+
+    @media (min-width: 992px) {
+      padding: 78px 111px;
+    }
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  &__consult {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    &--mobile {
+      font-size: 12px;
+
+      color: #b4c1d5;
+      display: initial;
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+  }
+  &__info {
+    margin: auto 0;
+    line-height: 150%;
+    position: relative;
+
+    &::before {
+      @extend %infoicon;
+      top: -86px;
+    }
+    &::after {
+      @extend %infoicon;
+      bottom: -86px;
+      right: 0;
+      transform: rotate(180deg);
+    }
+  }
+}
